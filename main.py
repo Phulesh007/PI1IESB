@@ -12,9 +12,8 @@ with open('Arquivo/casos_full2.csv') as arquivo_csv:
 
         # print ('{} - {} - {} - {} - {} - {} - {} - {} - {} - {} - {} - {}'.format(cidade, data, populacao, populacao_2019, casos_confirmado, casos_confirmados_100k, ultima_data, ultima_taxa_mortes, ultimas_mortes, estado, novos_confirmados, novas_mortes))
         # print(cidade)
-            aux = int(novas_mortes)
-            lista.append(aux)
-            
+        aux = int(novas_mortes)
+        lista.append(aux)
 
     def pesquisa_binaria(A, item):
         """Implementa pesquisa binária iterativamente."""
@@ -25,7 +24,7 @@ with open('Arquivo/casos_full2.csv') as arquivo_csv:
                 return meio
             elif A[meio] > item:
                 direita = meio - 1
-            else: # A[meio] < item
+            else:  # A[meio] < item
                 esquerda = meio + 1
         return -1
 
@@ -43,13 +42,13 @@ with open('Arquivo/casos_full2.csv') as arquivo_csv:
                     equal.append(x)
                 if x > pivot:
                     greater.append(x)
-            
-            return qsort(less)+equal+qsort(greater)  
-        
-        else:  
+
+            return qsort(less)+equal+qsort(greater)
+
+        else:
             return array
 
-    #Funções do programa
+    # Funções do programa
     def menu_funcs():
         print("""
                 Escolha uma opção:
@@ -68,9 +67,17 @@ with open('Arquivo/casos_full2.csv') as arquivo_csv:
             lista2 = qsort(lista)
             print(lista2)
             menu_funcs()
-            
+
+        if opcao == 2:
+        
+        if opcao == 3:
+        
+        if opcao == 4:
+        
+        if opcao == 5:
+
         if opcao == 0:
             quit()
-        
+
     menu_funcs()
 # print(pesquisa_binaria(lista2,0))
