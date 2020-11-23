@@ -15,7 +15,7 @@ with open('Arquivo/casos_full2.csv') as arquivo_csv:
 
             # print ('{} - {} - {} - {} - {} - {} - {} - {} - {} - {} - {} - {}'.format(cidade, data, populacao, populacao_2019, casos_confirmado, casos_confirmados_100k, ultima_data, ultima_taxa_mortes, ultimas_mortes, estado, novos_confirmados, novas_mortes))
             # print(cidade)
-            aux = int(novas_mortes)
+            aux = int(populacao)
             lista.append(aux)
 
     def pesquisa_binaria(A, item):
@@ -62,6 +62,7 @@ with open('Arquivo/casos_full2.csv') as arquivo_csv:
             vetor[i], vetor[menor] = vetor[menor], vetor[i]
 
     def BubbleSort(vetor):
+
         for final in range(len(vetor), 0, -1):
             flag = False
 
@@ -70,7 +71,7 @@ with open('Arquivo/casos_full2.csv') as arquivo_csv:
                     vetor[i + 1], vetor[i] = vetor[i], vetor[i + 1]
                     flag = True
 
-            if flag == True:
+            if not flag:
                 break
 
     def InsertionSort(vetor):
@@ -155,13 +156,16 @@ with open('Arquivo/casos_full2.csv') as arquivo_csv:
 
         opcao = int(input("Qual a opção desejada? "))
         if opcao == 1:
-            ler_arquivo()
-            start = time.time()
-            lista2 = QuickSort(lista)
-            end = time.time()
-            print(lista2)
-            print(end - start)
-            menu_funcs()
+            print("""
+                Escolha uma opção:
+                (1) = Ordenar população
+                (2) = Ordenar casos confirmados
+                (3) = Ordenar mortes
+                (0) = Para SAIR
+        """)
+        opcaoQuick = int(input("Qual a opção desejada? "))
+        if opcaoQuick == 1:
+            
 
         if opcao == 2:
             ler_arquivo()
