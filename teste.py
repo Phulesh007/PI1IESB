@@ -1,116 +1,59 @@
-import csv
-from Cidade import Cidade
+import time
+nomes = []
 
-with open('casos_full2.txt') as arquivo_csv:
+arquivo = open('TESTBUSCA2.txt',encoding="utf8")
 
-    leitor = csv.reader(arquivo_csv, delimiter=';')
+#palavras = arquivo.readlines()
 
-    entrada = input("digite a data: ")
-
-    lista_data = []
-    lista2 = []
-    lista_mortes = []
-    lista_cidades = []
-    lista_estados = []
-    lista_mortes2 = []
-    lista_cidades2 = []
-
-    c = 0
-    for [cidade, data, populacao, populacao_2019, casos_confirmado, casos_confirmados_100k, ultima_data, ultima_taxa_mortes, ultimas_mortes, estado, novos_confirmados, novas_mortes] in leitor:
-
-        # print ('{} - {} - {} - {} - {} - {} - {} - {} - {} - {} - {} - {}'.format(cidade, data, populacao, populacao_2019, casos_confirmado, casos_confirmados_100k, ultima_data, ultima_taxa_mortes, ultimas_mortes, estado, novos_confirmados, novas_mortes))
-        # print(cidade)
-            if(data == entrada):
-                aux = data
-                aux2 = int(ultimas_mortes)
-                aux3 = cidade
-                aux4 = estado
-                lista_data.append(aux)
-                lista_mortes.append(aux2)
-                lista_cidades.append(aux3)
-                lista_estados.append(aux4)
-                
-
-
-# print(lista)
-# print("**")
-# print(lista3)
-
-
-    entrada2 = input("digite a sigla-UF do estado na : ")
-
-for i in range(len(lista_estados)):
-    count =0
-    if(lista_estados[i] == entrada2):
-        #print(i)
-        lista_cidades2.append(lista_cidades[i])
-        lista_mortes2.append(lista_mortes[i])
-        
-        #print("cidade : {}, Data: {}, Numero de mortes: {}, Estado {}: ".format(lista_cidades[i],lista_data[i],lista_mortes[i],lista_estados[i]))
-        
-for i in range(len(lista_mortes2)):
-    print("cidade : {}Numero de mortes: {}".format(lista_cidades2[i],lista_mortes2[i]))
+for linha in arquivo.readlines():
     
+    palavras = linha.split('\n')
+    nomes.append(palavras[0])
 
-def qsort(array):
-    less = []
-    equal = []
-    greater = []
-
-    if len(array) > 1:
-        pivot = array[0]
-        for x in array:
-            if x < pivot:
-                less.append(x)
-            if x == pivot:
-                equal.append(x)
-            if x > pivot:
-                greater.append(x)
-        
-        return qsort(less)+equal+qsort(greater)  
-    
-    else:  
-        return array
+teste = input("digite uma palavra: ")
 
 def pesquisa_binaria(A, item):
     """Implementa pesquisa binária iterativamente."""
     esquerda, direita = 0, len(A) - 1
     while esquerda <= direita:
         meio = (esquerda + direita) // 2
-        if A[meio] == item:
+        if A[meio].lower() == item:
             return meio
-        elif A[meio] > item:
-            direita = meio - 1
-        else: # A[meio] < item
-            esquerda = meio + 1
+        else:
+            aux = A[meio].lower()
+            #print(aux)
+            for i in range(len(item)):
+                if item[i].lower() == aux[i]:
+                    continue
+                elif item[i].lower() > aux[i]:
+                    esquerda = meio + 1
+                    break
+                else:#item[i] < aux[i]
+                    direita = meio -1
+                    break
+
+
     return -1
 
 
-#lista2 = qsort(lista_mortes)
+# elif A[meio] > item:
+#     direita = meio - 1
+# else: # A[meio] < item
+#     esquerda = meio + 1
+start = time.time()
+print(pesquisa_binaria(nomes,teste))
+end = time.time()
+print("tempo de busca com busca binaria : {}".format(end - start))
 
+
+
+start = time.time()
+for i in range(len(nomes)):
+    #print(i)
+    if nomes[i].lower() == teste.lower():
+        print(i)
+        end = time.time()
+        break
+
+print("tempo de busca com busca sequencial : {}".format(end - start))
     
-# print(lista2)
-# print("**")
-
-# print(pesquisa_binaria(lista2,0))
-
-
-
-
-
-
-teste = {
-        'SP' : {
-             XS   'Cidades': [dados]
-                } 
-        
-        
-        }
-
-
-teste["19/08/2020"]['SP']
-
-
-
-
-

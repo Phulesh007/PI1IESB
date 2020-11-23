@@ -34,7 +34,7 @@ class TelaPython:
             [sg.Text('Qual algoritmo deseja utilizar?'),sg.Combo(['QuickSort', 'BubbleSort', 'SelectionSort', 'InsertionSort', 'MergeSort', 'Todos'] ,key='sort')],
             [sg.Text('O que deseja filtrar?'),sg.Combo(['Casos confirmados', 'Mortes', 'População'], key='filtro')],
             [sg.Button('Pesquisar')],
-            [sg.Output()]
+            [sg.Output(size=(100,25))]
         ]
         # Janela
         self.janela = sg.Window("Filtro covid test").layout(layout)
@@ -119,31 +119,75 @@ class TelaPython:
                 end = time.time()
                 print("tempo de ordenação com bubble sort : {}".format(end - start))
 
-            # if sort == 'Todos':
-            #     start = time.time()
-            #     QuickSort(lista)
-            #     end = time.time()
-            #     print("Tempo decorrido QuickSort: {}".format(end - start))
+            if sort == 'Todos':
+                aux = []
+                aux2 = []
+                if filtro == 'População':
+                    funcao.retornalistapopulacao(bagulhosImportantes,aux)
+                elif filtro == 'Casos confirmados':
+                    funcao.retornalistacasos(bagulhosImportantes,aux)
+                elif filtro == 'Mortes':
+                    funcao.retornalistamortos(bagulhosImportantes,aux)
 
-            #     start = time.time()
-            #     Sort(lista)
-            #     end = time.time()
-            #     print("Tempo decorrido MergeSort: {}".format(end - start))
+                start = time.time()
+                aux2 = Quicksort(aux)
+                end = time.time()
+                #print(aux2)
+                print("tempo de ordenação com quick sort : {}".format(end - start))
 
-            #     start = time.time()
-            #     InsertionSort(lista)
-            #     end = time.time()
-            #     print("Tempo decorrido InsertionSort: {}".format(end - start))
+                #***************************************
+                
+                aux = []
+                if filtro == 'População':
+                    funcao.retornalistapopulacao(bagulhosImportantes,aux)
+                elif filtro == 'Casos confirmados':
+                    funcao.retornalistacasos(bagulhosImportantes,aux)
+                elif filtro == 'Mortes':
+                    funcao.retornalistamortos(bagulhosImportantes,aux)  
 
-            #     start = time.time()
-            #     SelectionSort(lista)
-            #     end = time.time()
-            #     print("Tempo decorrido SelectionSort: {}".format(end - start))
+                start = time.time()
+                Mergesort(aux)
+                end = time.time()
+                print("tempo de ordenação com merge sort : {}".format(end - start))
+                #*************************************
+                aux = []
+                if filtro == 'População':
+                    funcao.retornalistapopulacao(bagulhosImportantes,aux)
+                elif filtro == 'Casos confirmados':
+                    funcao.retornalistacasos(bagulhosImportantes,aux)
+                elif filtro == 'Mortes':
+                    funcao.retornalistamortos(bagulhosImportantes,aux)   
 
-            #     start = time.time()
-            #     BubbleSort(lista)
-            #     end = time.time()
-            #     print("Tempo decorrido BlubbleSort: {}".format(end - start))
+                start = time.time()
+                Insertionsort(aux)
+                end = time.time()
+                print("tempo de ordenação com insertion sort : {}".format(end - start))
+                #***********************************
+                aux = []
+                if filtro == 'População':
+                    funcao.retornalistapopulacao(bagulhosImportantes,aux)
+                elif filtro == 'Casos confirmados':
+                    funcao.retornalistacasos(bagulhosImportantes,aux)
+                elif filtro == 'Mortes':
+                    funcao.retornalistamortos(bagulhosImportantes,aux)   
+
+                start = time.time()
+                Selectionsort(aux)
+                end = time.time()
+                print("tempo de ordenação com selection sort : {}".format(end - start))
+                #************************************
+                aux = []
+                if filtro == 'População':
+                    funcao.retornalistapopulacao(bagulhosImportantes,aux)
+                elif filtro == 'Casos confirmados':
+                    funcao.retornalistacasos(bagulhosImportantes,aux)
+                elif filtro == 'Mortes':
+                    funcao.retornalistamortos(bagulhosImportantes,aux) 
+
+                start = time.time()
+                Bubblesort(aux)
+                end = time.time()
+                print("tempo de ordenação com bubble sort : {}".format(end - start))
 
 tela = TelaPython()
 tela.Iniciar()
